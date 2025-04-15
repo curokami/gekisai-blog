@@ -9,7 +9,7 @@ content:
     extension: md
     create: true
     delete: true
-    slug: "test-post"
+    slug:  "{{title | slug}}"
     fields:
       - name: title
         label: タイトル
