@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import { AstroError } from 'astro/errors';
+
+const { slug } = Astro.params;
+const posts = await getCollection('posts');
+const post = posts.find((p) => p.slug === slug);
+
+if (!post) {
+  throw new AstroError(`記事「${slug}」が見つかりませんでした`);
+}
+
+const { Content, data } = post;
+---
+
+<html>
+  <head>
+    <title>{data.title}</title>
+  </head>
+  <body>
+    <article>
+      <h1>{data.title}</h1>
+      <p>{data.date}</p>
+      <Content />
+    </article>
+  </body>
+</html>
