@@ -9,14 +9,20 @@ content:
         label: Title
         type: text
         required: true
+
       - name: author
         label: Author
         type: text
         required: true
+
+      - name: cover
+        label: Cover Image
+        type: file
+        required: false
+
       - name: body
         label: Body
         type: code
         options:
           language: markdown
         required: true
-      
