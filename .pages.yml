@@ -1,51 +1,15 @@
-media:
-  input: public
-  output: /
-
 content:
   - name: posts
-    label: ブログ記事
+    label: Blog Posts
     folder: src/content/posts
     extension: md
-    create: true
-    delete: true
-    slug:  "{{title | slug}}"
+    slug: "test-post"
     fields:
       - name: title
-        label: タイトル
+        label: Title
         type: text
         required: true
-
-      - name: description
-        label: 概要
-        type: text
-
-      - name: date
-        label: 投稿日
-        type: datetime
-        required: true
-        default: now
-
-      - name: categories
-        label: カテゴリ
-        type: list
-        field:
-          type: text
-
-      - name: tags
-        label: タグ
-        type: list
-        field:
-          type: text
-
-      - name: draft
-        label: 下書き
-        type: boolean
-        default: false
-
       - name: body
-        label: 本文
-        type: code
-        options:
-          language: markdown
+        label: Body
+        type: markdown
         required: true
