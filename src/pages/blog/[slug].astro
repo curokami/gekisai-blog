@@ -1,0 +1,45 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  post: CollectionEntry<'blog'> & {
+    data: {
+      title: string;
+      author: string;
+      description?: string;
+      pubDate: Date;
+      updatedDate?: Date;
+      heroImage?: string;
+      categories?: string[];
+      tags?: string[];
+      draft?: boolean;
+    };
+  };
+};
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+  }));
+}
+
+export async function get({ params }: { params: { slug: string } }) {
+  const post = await getEntry('blog', params.slug);
+  if (!post) {
+    return new Response(null, { status: 404 });
+  }
+  return {
+    props: { post }
+  };
+}
+
+const { post } = Astro.props as Props;
+---
+<article>
+  <h1>{post.data.title}</h1>
+  <p>By {post.data.author}</p>
+  {post.data.heroImage && <img src={post.data.heroImage} alt="Cover image" />}
+  {post.body}
+</article>
