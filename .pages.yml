@@ -1,9 +1,9 @@
 content:
   - name: posts
     label: Blog Posts
-    folder: src/content/posts
-    extension: md
-    slug: "test-post"
+    path: src/content/posts
+    type: collection
+    filename: "{fields.title | slug}.md"
     fields:
       - name: title
         label: Title
