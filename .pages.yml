@@ -3,7 +3,7 @@ content:
     label: Blog Posts
     path: src/content/posts
     type: collection
-    filename: "{fields.title | slug}.md"
+    filename: "{fields.date}-{fields.title | slug}.md"
     fields:
       - name: title
         label: Title
