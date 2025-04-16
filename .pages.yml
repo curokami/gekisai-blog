@@ -15,5 +15,8 @@ content:
         required: true
       - name: body
         label: Body
-        type: markdown
+        type: code
+        options:
+          language: markdown
         required: true
+      
