@@ -1,3 +1,7 @@
+media:
+  input: public
+  output: /
+
 content:
   - name: posts
     label: Blog Posts
