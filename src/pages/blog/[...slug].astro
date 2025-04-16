@@ -1,27 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
-import { AstroError } from 'astro/errors';
+import { getCollection, getEntry } from 'astro:content';
 
-const { slug } = Astro.params;
-const posts = await getCollection('posts');
-const post = posts.find((p) => p.slug === slug);
-
-if (!post) {
-  throw new AstroError(`記事「${slug}」が見つかりませんでした`);
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+  }));
 }
 
-const { Content, data } = post;
+export async function get({ params }: { params: { slug: string } }) {
+  const post = await getEntry('posts', params.slug);
+  if (!post) {
+    return new Response(null, { status: 404 });
+  }
+  return {
+    props: { post }
+  };
+}
+
+const { post } = Astro.props;
 ---
 
-<html>
-  <head>
-    <title>{data.title}</title>
-  </head>
-  <body>
-    <article>
-      <h1>{data.title}</h1>
-      <p>{data.date}</p>
-      <Content />
-    </article>
-  </body>
-</html>
+<article>
+  <h1>{post.data.title}</h1>
+  <p>By {post.data.author}</p>
+  {post.data.cover && <img src={post.data.cover} alt="Cover image" />}
+  <Markdown content={post.body} />
+</article>
