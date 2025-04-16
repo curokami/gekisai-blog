@@ -9,6 +9,10 @@ content:
         label: Title
         type: text
         required: true
+      - name: author
+        label: Author
+        type: text
+        required: true
       - name: body
         label: Body
         type: markdown
