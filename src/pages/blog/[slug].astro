@@ -6,11 +6,19 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
 type Post = CollectionEntry<'blog'>;
 
 const { slug } = Astro.params;
 const posts = await getCollection('blog');
-const post = posts.find((post) => post.slug === slug);
+const post = posts.find((post) => post.id === slug);
 
 if (!post) {
   throw new Error(`Post not found for slug: ${slug}`);
