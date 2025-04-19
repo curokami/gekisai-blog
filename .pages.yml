@@ -3,11 +3,12 @@ media:
   output: /
 
 content:
-  - name: posts
+  - name: blog
     label: Blog Posts
-    path: src/content/blog
     type: collection
-    filename: "{fields.date}-{fields.title | slug}.md"
+    path: src/content/blog
+    view:
+      fields: [ title, pubDate, draft ]
     fields:
       - name: title
         label: Title
@@ -19,9 +20,19 @@ content:
         type: text
         required: true
 
+      - name: pubDate
+        label: Publish Date
+        type: date
+        required: true
+
       - name: heroImage
         label: Hero Image
         type: file
+        required: false
+
+      - name: draft
+        label: Draft
+        type: boolean
         required: false
 
       - name: body
