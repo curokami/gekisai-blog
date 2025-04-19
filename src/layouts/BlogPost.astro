@@ -8,7 +8,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const props = Astro.props; // ✅ 型アサーションをやめる
-const { title, description, pubDate, updatedDate, heroImage,cover } = props as Props; // ✅ 分割時に型を当てる
+const { title, description, pubDate, updatedDate, heroImage } = props as Props; // ✅ 分割時に型を当てる
 ---
 <html lang="en">
 	<head>
