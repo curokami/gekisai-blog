@@ -19,8 +19,8 @@ content:
         type: text
         required: true
 
-      - name: cover
-        label: Cover Image
+      - name: heroImage
+        label: Hero Image
         type: file
         required: false
 
