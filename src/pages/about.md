@@ -4,7 +4,7 @@ title: About Our Karate Club
 heroImage: /assets/Karateka-on-the-Moon.jpg
 ---
 <div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="/assets/Karateka-on-the-Moon.jpg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
 </div>
 # 私たちについて
 

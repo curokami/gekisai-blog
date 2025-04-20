@@ -2,7 +2,7 @@
 title: test as 3times
 author: tester
 pubDate: '2025-04-19'
-heroImage: /blog-placeholder-1.jpeg
+heroImage: /blog-placeholder-1.jpg
 ---
 #カバー画像が反映されない件
 
