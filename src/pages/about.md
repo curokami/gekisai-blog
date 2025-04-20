@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: About Me
+heroImage: /assets/Karateka-on-the-Moon.jpg.jpeg
 ---
 
 # About
