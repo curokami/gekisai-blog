@@ -3,7 +3,9 @@ layout: ../layouts/AboutLayout.astro
 title: About Our Karate Club
 heroImage: /assets/Karateka-on-the-Moon.jpg
 ---
-
+<div>
+  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+</div>
 # 私たちについて
 
 こんにちは！私たちは○○空手同好会です！
