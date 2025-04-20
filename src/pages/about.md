@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: About Our Karate Club
-heroImage: /assets/Karateka-on-the-Moon.jpg.jpeg
+heroImage: /assets/Karateka-on-the-Moon.jpg
 ---
 
 # 私たちについて
@@ -16,11 +16,11 @@ heroImage: /assets/Karateka-on-the-Moon.jpg.jpeg
 - 🥋 空手の基本・型・組手の稽古
 - 💬 技術だけでなく礼儀や精神も重視
 - 📅 週2回の定期練習（○曜日・○曜日）
-- 🏆 年に数回の大会や演武会にも参加
+
 
 ---
 ## 練習場所
-- 📍 ○○市○○区 ○○体育館
+- 📍 那覇市○○自治会館
 - 🕒 毎週○曜日 18:00～20:00
 
 ---
@@ -30,4 +30,3 @@ heroImage: /assets/Karateka-on-the-Moon.jpg.jpeg
 
 [お問い合わせはこちら](/contact)
 
-押忍！🥋
