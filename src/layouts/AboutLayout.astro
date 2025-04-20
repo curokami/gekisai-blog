@@ -2,18 +2,18 @@
 const { title, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="ja">
   <head>
     <title>{title}</title>
   </head>
   <body>
     {heroImage && (
       <div class="hero-image">
-        <img src={heroImage} alt="About Cover" />
+        <img src={heroImage} alt="About Cover" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem;" />
       </div>
     )}
-    <h1>{title}</h1>
-    <main>
+    <main style="padding: 2rem; max-width: 720px; margin: auto; font-family: sans-serif; color: #333;">
+      <h1 style="text-align: center; margin-bottom: 2rem;">{title}</h1>
       <slot />
     </main>
   </body>
