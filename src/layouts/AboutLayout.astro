@@ -7,9 +7,13 @@ const { title, heroImage } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    {heroImage && (
+      <div class="hero-image">
+        <img src={heroImage} alt="About Cover" />
+      </div>
+    )}
+    <h1>{title}</h1>
     <main>
-      {heroImage && <img src={heroImage} alt="About Image" />}
-      <h1>{title}</h1>
       <slot />
     </main>
   </body>
