@@ -9,6 +9,9 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
+
+const latest = posts[0];
+const others = posts.slice(1, 5);
 ---
 
 <html lang="ja" class="bg-gray-50">
@@ -17,10 +20,18 @@ const posts = (await getCollection('blog')).sort(
   </head>
   <body class="font-sans text-gray-800">
     <Header />
-    <main class="grid gap-8 p-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-      {posts.map((post) => (
-        <Card post={post} client:load />
-      ))}
+    <main class="space-y-12 px-4 max-w-7xl mx-auto">
+      <!-- 最新記事（大きめ） -->
+      <section>
+        <Card post={latest} large client:load />
+      </section>
+
+      <!-- その他の記事（2x2） -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {others.map((post) => (
+          <Card post={post} client:load />
+        ))}
+      </section>
     </main>
     <Footer />
   </body>
