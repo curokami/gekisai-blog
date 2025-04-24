@@ -21,7 +21,7 @@ const Card = ({ post, size = 'normal' }: Props) => {
         <img
           src={heroImage}
           alt={title}
-          className={`w-full ${isLarge ? 'h-64 md:h-96' : 'h-48'} object-cover`}
+          className="w-full h-48 object-cover"
         />
       )}
       <div className="p-4">
