@@ -26,6 +26,7 @@ const [latest, ...rest] = posts;
 
       <!-- 残りの4件を2x2で -->
       <section>
+		<div class="border border-red-500 p-4">test</div>
         <div class="grid gap-8 md:grid-cols-2">
           {rest.slice(0, 4).map((post) => (
             <Card post={post} size="normal" client:load />
