@@ -12,14 +12,16 @@ const Card = ({ post, size = 'normal' }: Props) => {
 
   return (
     <a
-        href={`/blog/${post.id}`}
-        className="block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white"
+      href={`/blog/${post.id}`}
+      className="block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white"
     >
       {heroImage && (
         <img
           src={heroImage}
           alt={title}
-          className="w-full aspect-video max-h-40 object-cover"
+          className={`w-full object-cover ${
+            isLarge ? 'h-64 md:h-96' : 'h-40'
+          }`}
         />
       )}
       <div className="p-4">
