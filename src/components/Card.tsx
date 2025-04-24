@@ -12,10 +12,8 @@ const Card = ({ post, size = 'normal' }: Props) => {
 
   return (
     <a
-      href={`/blog/${post.id}`}
-      className={`block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white ${
-        isLarge ? 'md:h-[400px]' : ''
-      }`}
+        href={`/blog/${post.id}`}
+        className="block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white"
     >
       {heroImage && (
         <img
