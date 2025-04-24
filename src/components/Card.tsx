@@ -19,7 +19,7 @@ const Card = ({ post, size = 'normal' }: Props) => {
         <img
           src={heroImage}
           alt={title}
-          className="w-full h-48 object-cover"
+          className="w-full aspect-video max-h-40 object-cover"
         />
       )}
       <div className="p-4">
