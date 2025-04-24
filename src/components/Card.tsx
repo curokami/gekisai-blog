@@ -1,23 +1,43 @@
----
-// src/layouts/Main.astro
+import React from 'react';
+import type { CollectionEntry } from 'astro:content';
 
----
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
----
+type Props = {
+  post: CollectionEntry<'blog'>;
+  size?: 'large' | 'normal';
+};
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><slot name="title" /></title>
-  </head>
-  <body>
-    <Header />
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+const Card = ({ post, size = 'normal' }: Props) => {
+  const { title, pubDate, heroImage } = post.data;
+  const isLarge = size === 'large';
+
+  return (
+    <a
+      href={`/blog/${post.id}`}
+      className={`block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white ${
+        isLarge ? 'md:h-[400px]' : ''
+      }`}
+    >
+      {heroImage && (
+        <img
+          src={heroImage}
+          alt={title}
+          className={`w-full ${isLarge ? 'h-64 md:h-96' : 'h-48'} object-cover`}
+        />
+      )}
+      <div className="p-4">
+        <p className="text-sm text-gray-500 mb-2">
+          {new Date(pubDate).toLocaleDateString('ja-JP')}
+        </p>
+        <h3
+          className={`font-semibold text-gray-800 leading-tight ${
+            isLarge ? 'text-2xl' : 'text-xl'
+          }`}
+        >
+          {title}
+        </h3>
+      </div>
+    </a>
+  );
+};
+
+export default Card;
