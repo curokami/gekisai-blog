@@ -10,6 +10,7 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 const [latest, ...rest] = posts;
+
 ---
 
 <html lang="ja" class="bg-gray-50">
@@ -21,7 +22,7 @@ const [latest, ...rest] = posts;
     <main class="px-4 py-8 max-w-7xl mx-auto space-y-12">
       <!-- 最新記事 -->
       <section>
-        <Card post={latest} size="large" client:load />
+        <Card post={{ ...latest, slug: latest.id }} size="large" client:load />
       </section>
 
       <!-- 残りの4件を2x2で -->
@@ -29,7 +30,7 @@ const [latest, ...rest] = posts;
 		<div class="border border-red-500 p-4">test</div>
         <div class="grid gap-8 md:grid-cols-2">
           {rest.slice(0, 4).map((post) => (
-            <Card post={post} size="normal" client:load />
+            <Card post={{ ...post, slug: post.id }} size="normal" client:load />
           ))}
         </div>
       </section>
