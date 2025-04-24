@@ -1,26 +1,23 @@
 import React from 'react';
 import type { CollectionEntry } from 'astro:content';
 
-type Props = {
-  post: CollectionEntry<'blog'>;
-  size?: 'large' | 'normal';
-};
+type Post = CollectionEntry<'blog'> & { slug: string }; // 明示的にslug追加
 
-const Card = ({ post, size = 'normal' }: Props) => {
+const Card = ({ post, size = 'normal' }: { post: Post; size?: 'large' | 'normal' }) => {
   const { title, pubDate, heroImage } = post.data;
   const isLarge = size === 'large';
 
   return (
     <a
-      href={`/blog/${post.id}`}
+      href={`/blog/${post.slug}`} 
       className="block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-white"
     >
       {heroImage && (
         <img
           src={heroImage}
           alt={title}
-          className={`w-full object-cover ${
-            isLarge ? 'h-64 md:h-96' : 'h-40'
+          className={`w-full aspect-video object-cover ${
+            isLarge ? 'max-h-96' : 'max-h-40'
           }`}
         />
       )}
