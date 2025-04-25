@@ -1,52 +1,45 @@
 ---
+import BlogCard from '../../components/BlogCard.tsx';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import type { CollectionEntry } from 'astro:content';
 
-type Post = CollectionEntry<'blog'>; 
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .map(post => ({ ...post, slug: post.id }));
 
-const posts = (await getCollection('blog')).sort( 
-  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
+// ページネーション処理
+const page = Number(Astro.url.searchParams.get('page') || 1);
+const perPage = 9;
+const totalPages = Math.ceil(posts.length / perPage);
+const paginatedPosts = posts.slice((page - 1) * perPage, page * perPage);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      /* ここにあなたのスタイルを記述してください */
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section>
-        <ul class="post-list">
-          {
-            posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.id}`}> {/* ✅ id → slug に直すのも推奨！ */}
-                  {post.data.heroImage && (
-                    <img width={720} height={360} src={post.data.heroImage} alt={post.data.title} />
-                  )}
-                  <h4 class="title">{post.data.title}</h4>
-                  {post.data.pubDate && (
-                    <p class="date">
-                     <FormattedDate date={post.data.pubDate} />
-                    </p>
-                  )}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+<Header />
+
+<main class="px-4 py-8 max-w-7xl mx-auto">
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {paginatedPosts.map((post) => (
+      <BlogCard post={post} />
+    ))}
+  </section>
+
+  <nav class="mt-8 flex justify-center space-x-2">
+    {Array.from({ length: totalPages }).map((_, i) => {
+      const p = i + 1;
+      return (
+        <a
+          href={`/blogindex?page=${p}`}
+          class={`px-3 py-1 rounded ${p === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+        >
+          {p}
+        </a>
+      );
+    })}
+  </nav>
+</main>
+
+<Footer />
