@@ -17,7 +17,7 @@ const Card = ({ post, size = 'normal' }: { post: Post; size?: 'large' | 'normal'
           src={heroImage}
           alt={title}
           className={`w-full aspect-video object-cover ${
-            isLarge ? 'max-h-96' : 'max-h-40'
+            isLarge ? 'max-h-64' : 'max-h-24'
           }`}
         />
       )}
