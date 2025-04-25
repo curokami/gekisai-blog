@@ -7,11 +7,15 @@ import { fileURLToPath } from 'url';
 
 import react from '@astrojs/react';
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
+
+const tailwindIntegration = tailwind({
+  applyBaseStyles: false, // baseスタイル（reset等）を無効化
+});
 
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [mdx(), sitemap(), react(), tailwind()],
 
   vite: {
     server: {
@@ -24,6 +28,6 @@ export default defineConfig({
       },
     },
 
-    plugins: [tailwindcss()],
+    
   },
 });
