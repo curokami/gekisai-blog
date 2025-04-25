@@ -6,3 +6,10 @@
 body {
  @apply bg-sumiiro text-ginnezu;
 }
+
+nav a {
+	padding: 1em 0.5em;
+	color: #f3f3f3; /* 白系文字に */
+	border-bottom: 4px solid transparent;
+	text-decoration: none;
+}
