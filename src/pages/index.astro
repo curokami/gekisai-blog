@@ -10,31 +10,26 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 const [latest, ...rest] = posts;
-
 ---
 
-<html lang="ja" class="bg-gray-50">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="font-sans text-gray-800">
-    <Header />
-    <main class="px-4 py-8 max-w-7xl mx-auto space-y-12">
-      <!-- 最新記事 -->
-      <section>
-        <Card post={{ ...latest, slug: latest.id }} size="large" client:load />
-      </section>
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
-      <!-- 残りの4件を2x2で -->
-      <section>
-		<div class="border border-red-500 p-4">test</div>
-        <div class="grid gap-8 md:grid-cols-2">
-          {rest.slice(0, 4).map((post) => (
-            <Card post={{ ...post, slug: post.id }} size="normal" client:load />
-          ))}
-        </div>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<Header />
+
+<main class="px-4 py-8 max-w-7xl mx-auto space-y-12">
+  <!-- 最新記事 -->
+  <section>
+    <Card post={{ ...latest, slug: latest.id }} size="large" />
+  </section>
+
+  <!-- 残りの4件を2x2で -->
+  <section>
+    <div class="grid gap-8 md:grid-cols-2">
+      {rest.slice(0, 4).map((post) => (
+        <Card post={{ ...post, slug: post.id }} size="normal" />
+      ))}
+    </div>
+  </section>
+</main>
+
+<Footer />
