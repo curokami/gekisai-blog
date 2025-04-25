@@ -32,4 +32,3 @@ heroImage: /assets/Karateka-on-the-Moon.jpg
 見学・体験入部も大歓迎です！
 
 [お問い合わせはこちら](/contact)
-
