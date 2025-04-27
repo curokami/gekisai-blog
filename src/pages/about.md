@@ -3,7 +3,8 @@ layout: ../layouts/AboutLayout.astro
 title: About Our Karate Club
 
 ---
-
+<br><br>
+<br><br>
 <div>
   <img src="/assets/karateka_on_moon_16_9.jpg" alt="Karateka on the Moon" style="width: 70%; max-width: 500px; height: auto; display: block; margin: 0 auto; border-radius: 12px;">
 </div>
