@@ -7,7 +7,7 @@ const { title, heroImage } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <section class="relative">
+    <section class="relative mb-16"> <!-- ✅ ここに mb-16 を追加 -->
       {heroImage && (
         <img src={heroImage} alt="About Cover" class="w-full max-h-[400px] object-cover rounded-xl shadow-lg" />
       )}
