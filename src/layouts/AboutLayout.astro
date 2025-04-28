@@ -7,18 +7,14 @@ const { title, heroImage } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    {heroImage && (
-      <div class="w-full max-w-3xl mx-auto mt-8">
-        <img
-          src={heroImage}
-          alt="About Cover"
-          class="w-full max-h-[400px] object-cover rounded-xl shadow-lg mb-12"
-        />
+    <section class="relative">
+      {heroImage && (
+        <img src={heroImage} alt="About Cover" class="w-full max-h-[400px] object-cover rounded-xl shadow-lg" />
+      )}
+      <div class="relative px-4 py-12 max-w-4xl mx-auto">
+        <h1 class="text-center text-3xl font-bold mb-8">{title}</h1>
+        <slot />
       </div>
-    )}
-    <main class="px-4 py-8 max-w-4xl mx-auto prose prose-invert">
-      <h1 class="text-center text-3xl font-bold mb-8">{title}</h1>
-      <slot />
-    </main>
+    </section>
   </body>
 </html>
