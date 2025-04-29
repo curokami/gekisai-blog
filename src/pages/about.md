@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: About Our Karate Club
+heroImage: /assets/karateka_on_moon_16_9.jpg
 
 ---
 <br><br>
