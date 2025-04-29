@@ -6,15 +6,23 @@ const { title, heroImage } = Astro.props;
   <head>
     <title>{title}</title>
   </head>
-  <body>
-    <section class="relative mb-16"> <!-- ✅ ここに mb-16 を追加 -->
-      {heroImage && (
-        <img src={heroImage} alt="About Cover" class="w-full max-h-[400px] object-cover rounded-xl shadow-lg" />
-      )}
-      <div class="relative px-4 py-12 max-w-4xl mx-auto">
+  <html lang="ja" class="bg-sumiiro text-gray-200">
+    <head>
+      <title>{title}</title>
+    </head>
+    <body>
+      <main class="px-4 py-8 max-w-4xl mx-auto prose prose-invert">
+        {heroImage && (
+          <div class="mb-12">
+            <img
+              src={heroImage}
+              alt="About Cover"
+              class="w-full max-h-[400px] object-cover rounded-xl shadow-lg"
+            />
+          </div>
+        )}
         <h1 class="text-center text-3xl font-bold mb-8">{title}</h1>
         <slot />
-      </div>
-    </section>
-  </body>
+      </main>
+    </body>
 </html>
