@@ -2,27 +2,16 @@
 const { title, heroImage } = Astro.props;
 ---
 
-<html lang="ja" class="bg-sumiiro text-gray-200">
-  <head>
-    <title>{title}</title>
-  </head>
-  <html lang="ja" class="bg-sumiiro text-gray-200">
-    <head>
-      <title>{title}</title>
-    </head>
-    <body>
-      <main class="px-4 py-8 max-w-4xl mx-auto prose prose-invert">
-        {heroImage && (
-          <div class="mb-12">
-            <img
-              src={heroImage}
-              alt="About Cover"
-              class="w-full max-h-[400px] object-cover rounded-xl shadow-lg"
-            />
-          </div>
-        )}
-        <h1 class="text-center text-3xl font-bold mb-8">{title}</h1>
-        <slot />
-      </main>
-    </body>
-</html>
+<section class="bg-sumiiro text-gray-200 px-4 py-8 max-w-4xl mx-auto prose prose-invert">
+  {heroImage && (
+    <div class="mb-12">
+      <img
+        src={heroImage}
+        alt="About Cover"
+        class="w-full max-h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+  )}
+  <h1 class="text-center text-3xl font-bold mb-8">{title}</h1>
+  <slot />
+</section>
