@@ -5,6 +5,7 @@ type Post = CollectionEntry<'blog'> & { slug: string };
 
 const BlogCard = ({ post }: { post: Post }) => {
   const { title, pubDate, heroImage } = post.data;
+  console.log('BlogCard slug:', post.slug);
 
   return (
     <a href={`/blog/${post.slug}`} className="block rounded overflow-hidden shadow hover:shadow-lg transition bg-white">

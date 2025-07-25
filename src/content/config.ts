@@ -10,6 +10,16 @@ const blog = defineCollection({
   }),
 });
 
+const posts = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    cover: z.string().optional(),
+    date: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog,
+  posts,
 };
